@@ -91,3 +91,5 @@ Docker memudahkan proses deployment dan memastikan aplikasi bisa berjalan dengan
 
 KELOMPOK : KELOMPOK 8
 Mata Kuliah : Server and Network Administration
+
+Project ini menggunakan Docker dan sistem Pull Request untuk kolaborasi.
