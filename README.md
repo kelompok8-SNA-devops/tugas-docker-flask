@@ -1,5 +1,12 @@
 # Tugas Docker - Flask API
 
+## Contributors
+
+- Maghfirli
+- Reyhan Muhamad Rizki
+- Claudiuscpm
+- ArifandoAr
+
 ## Deskripsi
 
 Project ini adalah tugas mata kuliah Server and Network Administration.
