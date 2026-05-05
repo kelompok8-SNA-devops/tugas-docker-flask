@@ -1,0 +1,61 @@
+name: DevSecOps CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test-security:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install bandit pip-audit
+
+      - name: Run unit test
+        run: |
+          pytest
+
+      - name: Security scan source code with Bandit
+        run: |
+          bandit -r . -x ./tests
+
+      - name: Security scan dependencies with pip-audit
+        run: |
+          pip-audit
+
+      - name: Build Docker image
+        run: |
+          docker build -t tugas-docker-flask .
+
+      - name: Security scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: tugas-docker-flask
+          format: table
+          exit-code: 0
+
+      - name: Run Docker container
+        run: |
+          docker run -d --name flask-api -p 5000:5000 tugas-docker-flask
+          sleep 5
+
+      - name: Health check application
+        run: |
+          curl http://localhost:5000/health
+
+      - name: Stop Docker container
+        run: |
+          docker stop flask-api
