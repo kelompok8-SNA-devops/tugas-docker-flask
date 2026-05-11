@@ -3,7 +3,7 @@
 ## Contributors
 
 - Maghfirli
-- Reyhan Muhamad Rizki
+- reyhan225
 - Claudiuscpm
 - ArifandoAr
 
