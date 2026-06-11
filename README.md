@@ -2,10 +2,10 @@
 
 ## Contributors
 
-- Maghfirli
-- reyhan225
-- Claudiuscpm
-- ArifandoAr
+Claudius Cezar - 2802544646
+Maghfirli Alif Al Ayubi - 2502022925
+Muhammad Arifando Akbar - 2602179170
+Lumban Tobing - 2802534241
 
 ## Deskripsi
 
