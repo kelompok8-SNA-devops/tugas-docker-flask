@@ -7,19 +7,18 @@ Maghfirli Alif Al Ayubi - 2502022925
 Muhammad Arifando Akbar - 2602179170
 Lumban Tobing - 2802534241
 
-
-#**Security Features**
-
-Bandit: Fitur ini digunakan untuk melakukan static code analysis pada source code Python.
-pip-audit: Fitur ini berfungsi untuk mengecek vulnerability (kerentanan keamanan) pada dependency Python yang digunakan dalam proyek.
-Trivy: Fitur ini digunakan untuk melakukan scanning terhadap Docker image.
-
 ## Deskripsi
 
 Project ini adalah tugas mata kuliah Server and Network Administration.
 
 Aplikasi ini dibuat menggunakan Python Flask dan dijalankan menggunakan Docker.
 Tujuan dari tugas ini adalah untuk memahami cara membuat Dockerfile, build image, dan menjalankan container.
+
+#**Security Features**
+
+Bandit: Fitur ini digunakan untuk melakukan static code analysis pada source code Python.
+pip-audit: Fitur ini berfungsi untuk mengecek vulnerability (kerentanan keamanan) pada dependency Python yang digunakan dalam proyek.
+Trivy: Fitur ini digunakan untuk melakukan scanning terhadap Docker image.
 
 ## Fitur
 
