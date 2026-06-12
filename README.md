@@ -3,8 +3,11 @@
 # Kelompok 8
 
 maghfirli - Maghfirli Alif Al Ayubi - 2502022925 
-Claudiuscpm - Claudius Cezar - 2802544646  
+
+Claudiuscpm - Claudius Cezar - 2802544646
+
 SillyBuddy-004 - Muhammad Arifando Akbar - 2602179170 
+
 reyhan225 - Lumban Tobing - 2802534241
 
 Mata Kuliah: Server and Network Administration
