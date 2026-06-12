@@ -32,7 +32,7 @@ Aplikasi menyediakan API sederhana yang dapat digunakan untuk:
 Tujuan utama project ini bukan hanya menjalankan aplikasi Flask, tetapi juga mengotomatisasi proses testing, security scanning, dan build Docker image menggunakan pipeline CI/CD.
 
 
-# Arsitektur Sistem
+# Pipeline Sistem
 
 Developer
 ↓
