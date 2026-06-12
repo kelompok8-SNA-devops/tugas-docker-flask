@@ -12,7 +12,7 @@ Mata Kuliah: Server and Network Administration
 
 
 
-#**Security Features**
+**Security Features**
 
 Bandit: Fitur ini digunakan untuk melakukan static code analysis pada source code Python.
 pip-audit: Fitur ini berfungsi untuk mengecek vulnerability (kerentanan keamanan) pada dependency Python yang digunakan dalam proyek.
