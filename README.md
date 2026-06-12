@@ -1,18 +1,16 @@
-# Tugas Docker - Flask API
+# Tugas Docker - Flask API CI/CD & DevSecOps
 
-## Contributors
+# Kelompok 8
 
-Claudius Cezar - 2802544646
-Maghfirli Alif Al Ayubi - 2502022925
-Muhammad Arifando Akbar - 2602179170
+Maghfirli Alif Al Ayubi - 2502022925 
+Claudius Cezar - 2802544646  
+Muhammad Arifando Akbar - 2602179170 
 Lumban Tobing - 2802534241
 
-## Deskripsi
+Mata Kuliah: Server and Network Administration
 
-Project ini adalah tugas mata kuliah Server and Network Administration.
 
-Aplikasi ini dibuat menggunakan Python Flask dan dijalankan menggunakan Docker.
-Tujuan dari tugas ini adalah untuk memahami cara membuat Dockerfile, build image, dan menjalankan container.
+
 
 #**Security Features**
 
@@ -20,80 +18,242 @@ Bandit: Fitur ini digunakan untuk melakukan static code analysis pada source cod
 pip-audit: Fitur ini berfungsi untuk mengecek vulnerability (kerentanan keamanan) pada dependency Python yang digunakan dalam proyek.
 Trivy: Fitur ini digunakan untuk melakukan scanning terhadap Docker image.
 
-## Fitur
+# Fitur
 
-Aplikasi memiliki 2 endpoint:
+# Deskripsi Project
 
-1. `/`
-   Menampilkan pesan utama dari aplikasi.
+Project ini merupakan implementasi CI/CD dan DevSecOps menggunakan GitHub Actions pada aplikasi backend sederhana berbasis Python Flask yang dijalankan menggunakan Docker.
 
-2. `/health`
-   Mengecek apakah aplikasi berjalan dengan baik.
+Aplikasi menyediakan API sederhana yang dapat digunakan untuk:
 
-## Tools yang Digunakan
+* Menampilkan response utama aplikasi
+* Melakukan health check terhadap service
 
-- Python 3.12
-- Flask
-- Docker Desktop
-- GitHub
+Tujuan utama project ini bukan hanya menjalankan aplikasi Flask, tetapi juga mengotomatisasi proses testing, security scanning, dan build Docker image menggunakan pipeline CI/CD.
 
-## Cara Menjalankan Project
 
-### 1. Build Docker Image
+# Arsitektur Sistem
 
-Masuk ke folder project, lalu jalankan:
+Developer
+↓
+Git Push
+↓
+GitHub Actions
+↓
+Pytest
+↓
+Bandit Scan
+↓
+pip-audit Scan
+↓
+Docker Build
+↓
+Trivy Scan
+↓
+Success
 
-```bash
-docker build -t tugas-docker-flask .
-```
+Setiap perubahan kode yang di-push ke repository akan memicu pipeline otomatis untuk memastikan aplikasi tetap berjalan dengan baik dan aman.
 
-Keterangan:
 
-- `docker build` untuk membuat image dari Dockerfile
-- `-t tugas-docker-flask` untuk memberi nama image
-- `.` artinya mengambil Dockerfile dari folder saat ini
 
-### 2. Jalankan Container
+# Endpoint API
 
-```bash
-docker run --name flask-api -p 5000:5000 tugas-docker-flask
-```
+# Home Endpoint
 
-Keterangan:
+URL:
 
-- `--name flask-api` memberi nama container
-- `-p 5000:5000` menghubungkan port laptop dengan port container
-- `tugas-docker-flask` adalah nama image
+http://localhost:5000/
 
-### 3. Akses Aplikasi
+Response:
 
-Buka browser dan ketik:
-http://localhost:5000
+{
+"message": "Hello from Flask API"
+}
 
-Untuk mengecek status aplikasi:
+Fungsi:
+
+Menampilkan response utama dari aplikasi.
+
+
+
+# Health Check Endpoint
+
+URL:
+
 http://localhost:5000/health
 
-Jika berhasil, akan muncul data dalam bentuk JSON.
+Response:
 
-## Cara Menghentikan Container
+{
+"status": "healthy"
+}
 
-Tekan `CTRL + C` di terminal.
+Fungsi:
 
-Atau jika berjalan di background:
+Digunakan untuk memastikan service berjalan dengan normal.
 
-bash
-docker stop flask-api
 
-## Cara Menghapus Container
 
-bash
-docker rm flask-api
+# Tools yang Digunakan
 
-## Kesimpulan
+* Python 3.12
+* Flask
+* Docker Desktop
+* GitHub Actions
+* Pytest
+* Bandit
+* pip-audit
+* Trivy
 
-Dengan menggunakan Docker, aplikasi dapat dijalankan tanpa perlu menginstall Python dan Flask secara manual di komputer. Semua dependency sudah berada di dalam container.
 
-Docker memudahkan proses deployment dan memastikan aplikasi bisa berjalan dengan environment yang sama di komputer lain.
 
-KELOMPOK : KELOMPOK 8
-Mata Kuliah : Server and Network Administration
+# Implementasi Security (DevSecOps)
+
+Project ini menggunakan 3 security tools utama:
+
+#  1. Bandit
+
+Fungsi:
+
+Melakukan Static Application Security Testing (SAST) pada source code Python.
+
+Contoh kerentanan yang dapat dideteksi:
+
+* os.system()
+* eval()
+* hardcoded password
+* command injection
+
+Menjalankan Bandit:
+
+bandit -r .
+
+
+
+# 2. pip-audit
+
+Fungsi:
+
+Memeriksa dependency Python yang digunakan aplikasi dan mencocokkannya dengan database vulnerability (CVE).
+
+Contoh:
+
+Jika menggunakan Flask versi lama yang memiliki vulnerability, pip-audit akan memberikan peringatan.
+
+Menjalankan pip-audit:
+
+pip-audit
+
+
+# 3. Trivy
+
+Fungsi:
+
+Melakukan scanning terhadap Docker image untuk mendeteksi vulnerability pada package dan dependency di dalam container.
+
+Menjalankan Trivy:
+
+trivy image tugas-docker-flask
+
+
+
+# Cara Menjalankan Project
+
+# 1. Clone Repository
+
+git clone https://github.com/kelompok8-SNA-devops/tugas-docker-flask.git
+
+cd tugas-docker-flask
+
+
+
+# 2. Build Docker Image
+
+docker build -t tugas-docker-flask .
+
+
+
+# 3. Jalankan Container
+
+docker run --name flask-api -p 5000:5000 tugas-docker-flask
+
+
+
+# 4. Akses Aplikasi
+
+Home Endpoint:
+
+http://localhost:5000/
+
+Health Check Endpoint:
+
+http://localhost:5000/health
+
+
+# Cara Menjalankan Tanpa Docker
+
+Install dependency:
+
+pip install -r requirements.txt
+
+Jalankan aplikasi:
+
+python app.py
+
+Akses:
+
+http://localhost:5000
+
+
+
+# Cara Menjalankan Testing
+
+pytest -v
+
+Hasil yang diharapkan:
+
+2 passed
+
+
+
+# Cara Menjalankan Security Testing
+
+- Bandit:
+
+bandit -r .
+
+- pip-audit:
+
+pip-audit
+
+- Trivy:
+
+trivy image tugas-docker-flask
+
+
+
+# Validasi Efektivitas Security Tools
+
+Untuk membuktikan security tools bekerja dengan baik, dilakukan simulasi:
+
+Bandit:
+
+* Menambahkan kode os.system()
+* Bandit berhasil mendeteksi potensi command injection
+
+pip-audit:
+
+* Menggunakan dependency versi lama yang memiliki vulnerability
+* pip-audit berhasil mendeteksi vulnerability
+
+Trivy:
+
+* Menggunakan Docker image versi lama
+* Trivy berhasil mendeteksi vulnerability pada image
+
+
+# Kesimpulan
+
+Project ini berhasil mengimplementasikan CI/CD dan DevSecOps menggunakan GitHub Actions. Pipeline mampu melakukan testing otomatis, security scanning, dan build Docker image setiap terjadi perubahan pada source code.
+
+Implementasi Bandit, pip-audit, dan Trivy membantu meningkatkan keamanan aplikasi sejak tahap pengembangan sehingga potensi vulnerability dapat dideteksi lebih awal sebelum aplikasi digunakan pada lingkungan production.
